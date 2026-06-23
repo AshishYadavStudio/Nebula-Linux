@@ -2,7 +2,7 @@
 
 > Fast, Minimalist, and Beautiful. A custom, bleeding-edge Linux Distribution powered by Debian Trixie and KDE Plasma 6.
 
-**🌐 Official Website:** [https://ashishyadavstudio.github.io/Nebula-Linux/](https://ashishyadavstudio.github.io/Nebula-Linux/)
+**🌐 Official Website:** [https://nebula-linux-os.github.io/Nebula-Linux/](https://nebula-linux-os.github.io/Nebula-Linux/)
 
 > [!WARNING]
 > **Alpha Stage Software:** Nebula Linux is currently in a very early stage of development. While it is fully functional and blazing fast, you may encounter bugs. Use with caution or test in a Virtual Machine!
@@ -20,7 +20,7 @@
 - **Custom Welcome App**: A Python-based welcome screen featuring `fastfetch` system information.
 
 ## 📥 Download
-Head over to our [Official Website](https://ashishyadavstudio.github.io/Nebula-Linux/) to download the latest `.iso` file and view the installation guide!
+Head over to our [Official Website](https://nebula-linux-os.github.io/Nebula-Linux/) to download the latest `.iso` file and view the installation guide!
 
 ## 🛠️ Build it Yourself
 You can compile your own custom version of Nebula Linux using our robust Docker build script.
@@ -32,7 +32,7 @@ You can compile your own custom version of Nebula Linux using our robust Docker 
 ### Instructions
 1. Clone this repository:
    ```bash
-   git clone https://github.com/AshishYadavStudio/Nebula-Linux.git
+   git clone https://github.com/nebula-linux-os/Nebula-Linux.git
    cd Nebula-Linux
    ```
 2. Place any custom images you want in the `assets/` folder (`splash.png` and `wallpaper.png`).
