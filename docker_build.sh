@@ -61,6 +61,7 @@ git
 htop
 timeshift
 python3-pyqt5
+python3-tk
 
 # Installer
 calamares
@@ -103,6 +104,21 @@ Comment=Welcome to Nebula Linux
 X-GNOME-Autostart-enabled=true
 EOF
 
+# 3.5 Bug Reporter App Integration
+cp /build/nebula_bug_reporter.py config/includes.chroot/usr/local/bin/nebula-bug-reporter
+chmod +x config/includes.chroot/usr/local/bin/nebula-bug-reporter
+
+mkdir -p config/includes.chroot/usr/share/applications
+cat <<EOF > config/includes.chroot/usr/share/applications/nebula-bug-reporter.desktop
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/nebula-bug-reporter
+Icon=tools-report-bug
+Name=Report a Bug
+Comment=Report an issue to the Nebula Linux team
+Categories=System;Utility;
+EOF
+
 # 4. SDDM Wayland Config
 mkdir -p config/includes.chroot/etc/sddm.conf.d
 cat <<EOF > config/includes.chroot/etc/sddm.conf.d/default.conf
@@ -114,9 +130,9 @@ EOF
 mkdir -p config/bootloaders/isolinux
 mkdir -p config/bootloaders/grub
 
-# Format splash.png specifically for ISOLINUX (640x480, 8-bit palette)
-convert /build/assets/splash.png -resize 640x480\! -colors 256 config/bootloaders/isolinux/splash.png
-cp /build/assets/splash.png config/bootloaders/grub/splash.png
+# Format wallpaper.png specifically for ISOLINUX (640x480, 8-bit palette)
+convert /build/assets/wallpaper.png -resize 640x480\! -colors 256 config/bootloaders/isolinux/splash.png
+cp /build/assets/wallpaper.png config/bootloaders/grub/splash.png
 
 # 6. Desktop Wallpaper Placement
 mkdir -p config/includes.chroot/usr/share/wallpapers/Nebula/contents/images
@@ -217,6 +233,15 @@ if [ -f /etc/calamares/settings.conf ]; then
 fi
 EOF
 chmod +x config/hooks/live/98-calamares.hook.chroot
+
+# 9. System About Page Branding
+cat <<'EOF' > config/hooks/live/99-os-release.hook.chroot
+#!/bin/sh
+set -e
+sed -i 's/^NAME=.*/NAME="Nebula Linux (Debian 13)"/' /etc/os-release
+sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Nebula Linux (Debian 13)"/' /etc/os-release
+EOF
+chmod +x config/hooks/live/99-os-release.hook.chroot
 
 echo "[4/5] Building the ISO..."
 lb build

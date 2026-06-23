@@ -25,6 +25,7 @@ WORKDIR /build
 COPY docker_build.sh /build/docker_build.sh
 COPY assets /build/assets
 COPY nebula_welcome.py /build/nebula_welcome.py
+COPY nebula_bug_reporter.py /build/nebula_bug_reporter.py
 RUN chmod +x /build/docker_build.sh
 
 # Run the build script when the container starts
