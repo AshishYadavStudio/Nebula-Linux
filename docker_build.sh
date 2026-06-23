@@ -176,11 +176,6 @@ images:
     productWelcome:      "logo.png"
 
 slideshow:               "show.qml"
-
-style:
-   sidebarBackground:    "#1e1e2e"
-   sidebarText:          "#cdd6f4"
-   sidebarTextSelect:    "#89b4fa"
 EOF
 
 cp /build/assets/splash.png config/includes.chroot/etc/calamares/branding/nebula/logo.png
@@ -238,8 +233,10 @@ chmod +x config/hooks/live/98-calamares.hook.chroot
 cat <<'EOF' > config/hooks/live/99-os-release.hook.chroot
 #!/bin/sh
 set -e
-sed -i 's/^NAME=.*/NAME="Nebula Linux (Debian 13)"/' /etc/os-release
-sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Nebula Linux (Debian 13)"/' /etc/os-release
+sed -i 's/^NAME=.*/NAME="Nebula Linux"/' /etc/os-release
+sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Nebula Linux"/' /etc/os-release
+sed -i 's/^VERSION=.*/VERSION="1.0"/' /etc/os-release
+sed -i 's/^VERSION_ID=.*/VERSION_ID="1.0"/' /etc/os-release
 EOF
 chmod +x config/hooks/live/99-os-release.hook.chroot
 
