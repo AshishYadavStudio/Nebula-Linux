@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nebula Linux</title>
     <meta name="description" content="Fast, Minimalist, and Beautiful. A bleeding-edge Linux Distribution powered by Debian Trixie and KDE Plasma 6.">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="alpha-warning">
@@ -23,13 +23,26 @@
         </div>
         <div class="links">
             <a href="#features">Features</a>
+            <a href="docs.html">Docs</a>
             <a href="https://github.com/AshishYadavStudio/Nebula-Linux" target="_blank">GitHub</a>
+            <button id="theme-toggle" class="theme-btn">☀️</button>
         </div>
     </nav>
 
     <header>
         <div class="hero-content">
-            <h1 class="fade-in-up">The Linux Desktop,<br><span class="gradient-text">Reimagined.</span></h1>
+            <div class="terminal-container fade-in-up">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">user@nebula:~</span>
+                </div>
+                <div class="terminal-body">
+                    <span class="prompt">$ </span><span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                </div>
+            </div>
+            <h1 class="fade-in-up delay-1">The Linux Desktop,<br><span class="gradient-text">Reimagined.</span></h1>
             <p class="fade-in-up delay-1">Fast, Minimalist, and Beautiful. Built on Debian Trixie and KDE Plasma 6 for the ultimate bleeding-edge experience.</p>
             <div class="cta-buttons fade-in-up delay-2">
                 <a href="https://github.com/AshishYadavStudio/Nebula-Linux/releases/latest" class="btn-primary" id="download-btn" target="_blank">Download ISO</a>
@@ -117,6 +130,33 @@
                     <li><strong>Storage:</strong> 50+ GB SSD</li>
                     <li><strong>GPU:</strong> Any modern AMD/Intel/NVIDIA</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="features-section">
+        <h2 class="section-title">Development Roadmap</h2>
+        <div class="timeline">
+            <div class="timeline-item completed">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Alpha 1.0 (Current)</h3>
+                    <p>Core Debian Trixie base, Plasma 6 integration, Custom Themes, Initial Installer.</p>
+                </div>
+            </div>
+            <div class="timeline-item active">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Beta 1.0</h3>
+                    <p>Native Bug Reporter, Hardware Driver Manager, Custom Nebula Icon Pack.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Release Candidate (1.0)</h3>
+                    <p>Final bug fixes, stable repository freeze, Official Public Launch.</p>
+                </div>
             </div>
         </div>
     </section>
