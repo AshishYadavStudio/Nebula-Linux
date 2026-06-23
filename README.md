@@ -24,8 +24,8 @@ You can compile your own custom version of Nebula Linux using our robust Docker 
 ### Instructions
 1. Clone this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/nebula-linux.git
-   cd nebula-linux
+   git clone https://github.com/AshishYadavStudio/Nebula-Linux.git
+   cd Nebula-Linux
    ```
 2. Place any custom images you want in the `assets/` folder (`splash.png` and `wallpaper.png`).
 3. Run the automated Docker build script:
