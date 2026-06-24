@@ -154,6 +154,7 @@ EOF
 
 # 8. Calamares Installer Branding
 mkdir -p config/includes.chroot/etc/calamares/branding/nebula
+cp /build/assets/splash.png config/includes.chroot/etc/calamares/branding/nebula/logo.png
 cat <<EOF > config/includes.chroot/etc/calamares/branding/nebula/branding.desc
 ---
 componentName:  nebula
@@ -178,46 +179,21 @@ images:
 slideshow:               "show.qml"
 EOF
 
-cp /build/assets/splash.png config/includes.chroot/etc/calamares/branding/nebula/logo.png
-
 cat <<'EOF' > config/includes.chroot/etc/calamares/branding/nebula/show.qml
-import QtQuick 2.0
-import calamares.slideshow 1.0
+import QtQuick
 
-Presentation {
-    id: presentation
-    Timer {
-        interval: 3000
-        running: true
-        repeat: true
-        onTriggered: presentation.goToNextSlide()
-    }
-    Slide {
-        Text {
-            anchors.centerIn: parent
-            text: "Welcome to Nebula Linux"
-            color: "#cdd6f4"
-            font.pixelSize: 40
-        }
-    }
-    Slide {
-        Text {
-            anchors.centerIn: parent
-            text: "Ultra Minimalist & Fast"
-            color: "#89b4fa"
-            font.pixelSize: 30
-        }
-    }
-    Slide {
-        Text {
-            anchors.centerIn: parent
-            text: "Pre-configured Flatpak & Wayland Gestures"
-            color: "#a6e3a1"
-            font.pixelSize: 30
-        }
+Rectangle {
+    color: "#0b0c10"
+    Text {
+        anchors.centerIn: parent
+        text: "Installing Nebula Linux..."
+        color: "#00e5ff"
+        font.pixelSize: 24
     }
 }
 EOF
+
+
 
 cat <<'EOF' > config/hooks/live/98-calamares.hook.chroot
 #!/bin/sh
@@ -226,6 +202,13 @@ set -e
 if [ -f /etc/calamares/settings.conf ]; then
     sed -i 's/branding: debian/branding: nebula/g' /etc/calamares/settings.conf
 fi
+
+# Fix Wayland Root GUI bug for the desktop installer shortcut
+for desk in /usr/share/applications/install-debian.desktop /usr/share/applications/calamares.desktop; do
+    if [ -f "$desk" ]; then
+        sed -i 's/^Exec=.*/Exec=sh -c "xhost +si:localuser:root \&\& pkexec calamares"/' "$desk"
+    fi
+done
 EOF
 chmod +x config/hooks/live/98-calamares.hook.chroot
 
@@ -233,10 +216,16 @@ chmod +x config/hooks/live/98-calamares.hook.chroot
 cat <<'EOF' > config/hooks/live/99-os-release.hook.chroot
 #!/bin/sh
 set -e
-sed -i 's/^NAME=.*/NAME="Nebula Linux"/' /etc/os-release
-sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Nebula Linux"/' /etc/os-release
-sed -i 's/^VERSION=.*/VERSION="1.0"/' /etc/os-release
-sed -i 's/^VERSION_ID=.*/VERSION_ID="1.0"/' /etc/os-release
+cat <<OSREL > /etc/os-release
+PRETTY_NAME="Nebula Linux 1.0"
+NAME="Nebula Linux"
+VERSION="1.0"
+ID=nebula
+ID_LIKE=debian
+HOME_URL="https://nebula-linux-os.github.io/Nebula-Linux/"
+SUPPORT_URL="https://github.com/nebula-linux-os/Nebula-Linux/issues"
+BUG_REPORT_URL="https://github.com/nebula-linux-os/Nebula-Linux/issues"
+OSREL
 EOF
 chmod +x config/hooks/live/99-os-release.hook.chroot
 

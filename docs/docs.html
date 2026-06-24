@@ -43,10 +43,29 @@
 
             <section id="installation">
                 <h2>Installation Guide</h2>
-                <p>1. Download the latest <code>.iso</code> file from the Releases page.</p>
-                <p>2. Flash it to a USB drive using <strong>Rufus</strong> or <strong>BalenaEtcher</strong>.</p>
-                <p>3. Reboot your computer and enter your BIOS/UEFI settings to boot from the USB.</p>
-                <p>4. Once booted into the live environment, double click the "Install Nebula" icon on the desktop and follow the Calamares installer steps.</p>
+                <p>Follow the instructions below depending on how you plan to test or install Nebula Linux.</p>
+
+                <h3 style="margin-top: 2rem; color: var(--accent-blue);">🖥️ Virtual Machine (Recommended for Testing)</h3>
+                <ol style="line-height: 1.8;">
+                    <li>Download the latest Nebula Linux <code>.iso</code> file.</li>
+                    <li>Open <strong>VirtualBox</strong> or <strong>VMware</strong> and click <strong>New</strong> to create a new Virtual Machine.</li>
+                    <li>Select <strong>Linux</strong> as the Type, and <strong>Debian (64-bit)</strong> as the Version.</li>
+                    <li>Allocate at least <strong>4GB of RAM</strong> and <strong>2 CPU Cores</strong> for a smooth Wayland experience.</li>
+                    <li>In the VM Settings, go to <strong>Storage</strong>, click the empty CD icon, and choose the Nebula <code>.iso</code> file.</li>
+                    <li>Under <strong>Display</strong> settings, make sure to enable <strong>3D Acceleration</strong> and max out Video Memory to 128MB.</li>
+                    <li>Start the VM! Once booted to the live desktop, double-click the <strong>Install Nebula Linux</strong> icon to install it permanently.</li>
+                </ol>
+
+                <h3 style="margin-top: 2rem; color: var(--accent-green);">💻 Bare Metal (Real Computer)</h3>
+                <ol style="line-height: 1.8;">
+                    <li>Download the latest Nebula Linux <code>.iso</code> file.</li>
+                    <li>Plug in an empty USB Flash Drive (at least 8GB).</li>
+                    <li>Download and open <a href="https://rufus.ie/" target="_blank" style="color: var(--accent-purple);">Rufus</a> (Windows) or <a href="https://etcher.balena.io/" target="_blank" style="color: var(--accent-purple);">BalenaEtcher</a> (Mac/Linux).</li>
+                    <li>Select your USB drive, select the Nebula <code>.iso</code>, and click <strong>Flash</strong>. <em>(Note: This will erase everything on the USB drive!)</em></li>
+                    <li>Restart your computer and rapidly press your Boot Menu key (usually <code>F12</code>, <code>F8</code>, <code>F2</code>, or <code>Del</code>).</li>
+                    <li>Select your USB drive from the boot list to boot into Nebula Linux.</li>
+                    <li>Once on the live desktop, double-click the <strong>Install Nebula Linux</strong> icon to launch the Calamares Installer and install it to your hard drive!</li>
+                </ol>
             </section>
 
             <section id="post-install">
