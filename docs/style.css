@@ -624,3 +624,56 @@ body.light-mode .timeline-content { border: 1px solid rgba(0,0,0,0.05); }
     color: #a6e3a1;
     overflow-x: auto;
 }
+
+/* Timeline / Roadmap Styles */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin-left: -1px;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background: inherit;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.timeline-marker {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 13px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent-blue);
+    border-radius: 50%;
+    z-index: 1;
+    top: 15px;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+.timeline-item.planned .timeline-marker {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 10px rgba(180, 160, 255, 0.5);
+    background-color: transparent;
+}
+.timeline-item.completed .timeline-marker {
+    background-color: var(--accent-blue);
+}
+.timeline-content {
+    padding: 1.5rem;
+    border-radius: 12px;
+    position: relative;
+}
+.timeline-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
